@@ -1,0 +1,24 @@
+export PATH=$PATH:$HOME/.composer/vendor/binexport PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
+export PATH="/opt/homebrew/opt/postgresql@15/bin:$PATH"
+
+# parse_git_branch() {
+#     git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+# }
+# COLOR_DEF='%f'
+# COLOR_USR='%F{243}'
+# COLOR_DIR='%F{197}'
+# COLOR_GIT='%F{39}'
+# NEWLINE=$'\n'
+# setopt PROMPT_SUBST
+# export PROMPT='${COLOR_USR}%n@%M ${COLOR_DIR}%d ${COLOR_GIT}$(parse_git_branch)${COLOR_DEF}${NEWLINE}%% '
+
+
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/[\1]/p'
+}
+
+setopt PROMPT_SUBST
+export PROMPT='%F{grey}%n%f %F{cyan}%~%f %F{green}$(parse_git_branch)%f %F{normal}$%f '
