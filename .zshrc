@@ -1,4 +1,10 @@
 alias vim="nvim"
+alias gs="git status"
+
+export PATH=$PATH:$HOME/.composer/vendor/binexport PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+
+# Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
+export PATH="$PATH:$HOME/.rvm/bin"
 
 # Add directory and current branch to terminal name
 function parse_git_branch() {
