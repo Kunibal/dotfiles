@@ -1,2 +1,2 @@
-require("nvimmean.remap")
-require("nvimmean.set")
+require("nvim-v1.remap")
+require("nvim-v1.set")
