@@ -13,7 +13,10 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
+    -- Use whatever theme works
     use { "catppuccin/nvim", as = "catppuccin" }
+    use { "rose-pine/neovim", as = "rose-pine" }
+    use { "navarasu/onedark.nvim", as = "onedark" }
 
     use { "nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" } }
     use { "theprimeagen/harpoon" }
