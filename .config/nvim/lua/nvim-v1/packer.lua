@@ -15,14 +15,15 @@ return require('packer').startup(function(use)
 
     -- Use whatever theme works
     use { "catppuccin/nvim", as = "catppuccin" }
-    use { "rose-pine/neovim", as = "rose-pine" }
-    use { "navarasu/onedark.nvim", as = "onedark" }
+    --  use { "rose-pine/neovim", as = "rose-pine" }
+    --  use { "navarasu/onedark.nvim", as = "onedark" }
 
     use { "nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" } }
     use { "theprimeagen/harpoon" }
     use { "mbbill/undotree" }
     use { "tpope/vim-fugitive" }
     use { "github/copilot.vim" }
+    use { "christoomey/vim-tmux-navigator" }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -31,17 +32,18 @@ return require('packer').startup(function(use)
             -- LSP Support
             { 'neovim/nvim-lspconfig' }, -- Required
             {                  -- Optional
-                'williamboman/mason.nvim',
-                run = function()
-                    pcall(vim.api.nvim_command, 'MasonUpdate')
-                end,
-            },
-            { 'williamboman/mason-lspconfig.nvim' }, -- Optional
+            'williamboman/mason.nvim',
+            run = function()
+                pcall(vim.api.nvim_command, 'MasonUpdate')
+            end,
+        },
+        { 'williamboman/mason-lspconfig.nvim' }, -- Optional
 
-            -- Autocompletion
-            { 'hrsh7th/nvim-cmp' }, -- Required
-            { 'hrsh7th/cmp-nvim-lsp' }, -- Required
-            { 'L3MON4D3/LuaSnip' }, -- Required
-        }
+        -- Autocompletion
+        { 'hrsh7th/nvim-cmp' }, -- Required
+        { 'hrsh7th/cmp-nvim-lsp' }, -- Required
+        { 'L3MON4D3/LuaSnip' }, -- Required
     }
+}
 end)
+
