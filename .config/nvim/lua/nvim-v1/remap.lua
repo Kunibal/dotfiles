@@ -47,7 +47,7 @@ vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
 
--- Ctrl J for copilot completion
+-- Ctrl B for copilot completion
 vim.g.copilot_no_tab_map = true
 vim.api.nvim_set_keymap("i", "<C-b>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 
