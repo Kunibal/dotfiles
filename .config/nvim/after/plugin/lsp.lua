@@ -50,24 +50,6 @@ lsp.on_attach(function(client, bufnr)
     vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 end)
 
--- enable format
-local function allow_format(servers)
-    return function(client) return vim.tbl_contains(servers, client.name) end
-end
-
-lsp.on_attach(function(client, bufnr)
-    lsp.default_keymaps({ buffer = bufnr })
-    local opts = { buffer = bufnr }
-
-    vim.keymap.set({ "n", "x" }, "<leader>wf", function()
-        vim.lsp.buf.format({
-            async = false,
-            timeout_ms = 10000,
-            filter = allow_format({ "lua_ls", "rust_analyzer" })
-        })
-    end, opts)
-end)
-
 lsp.setup()
 
 vim.diagnostic.config({

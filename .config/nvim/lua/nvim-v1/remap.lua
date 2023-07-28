@@ -28,6 +28,7 @@ vim.keymap.set({ "n", "v" }, "<leader>d", [["_d]])
 vim.keymap.set("n", "Q", "<nop>")
 -- switching windows
 vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
+-- format file
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- don't know what this does, still figuring it out
