@@ -22,8 +22,10 @@ return require('packer').startup(function(use)
     use { "theprimeagen/harpoon" }
     use { "mbbill/undotree" }
     use { "tpope/vim-fugitive" }
-    use { "github/copilot.vim" }
+    -- canceled copilot, will try again later
+    -- use { "github/copilot.vim" }
     use { "christoomey/vim-tmux-navigator" }
+    use { "m4xshen/autoclose.nvim" }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
