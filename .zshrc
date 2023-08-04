@@ -12,4 +12,4 @@ function parse_git_branch() {
 }
 
 setopt PROMPT_SUBST
-export PROMPT='%F{grey}%n%f %F{red}%~%f %F{blue}$(parse_git_branch)%f %F{normal}$%f '
+export PROMPT='%F{grey}%n%f %F{#4387ed}%~%f %F{#aaf0d1}$(parse_git_branch)%f %F{normal}$%f '

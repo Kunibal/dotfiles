@@ -26,6 +26,7 @@ return require('packer').startup(function(use)
     -- use { "github/copilot.vim" }
     use { "christoomey/vim-tmux-navigator" }
     use { "m4xshen/autoclose.nvim" }
+    use { "mattn/emmet-vim" }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
@@ -52,4 +53,7 @@ return require('packer').startup(function(use)
         'nvim-lualine/lualine.nvim',
         requires = { 'nvim-tree/nvim-web-devicons', opt = true }
     }
+
+    use { "iamcco/markdown-preview.nvim", run = "cd app && npm install",
+        setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, }
 end)
