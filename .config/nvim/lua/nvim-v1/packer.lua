@@ -13,21 +13,22 @@ return require('packer').startup(function(use)
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
 
-    -- Use whatever theme works
+    -- use whatever theme works
     use { "catppuccin/nvim", as = "catppuccin" }
     --  use { "rose-pine/neovim", as = "rose-pine" }
     --  use { "navarasu/onedark.nvim", as = "onedark" }
 
     use { "nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" } }
-    use { "theprimeagen/harpoon" }
+    use { "nvim-treesitter/nvim-treesitter-context" }
+    use { "ThePrimeagen/harpoon" }
     use { "mbbill/undotree" }
     use { "tpope/vim-fugitive" }
-    -- canceled copilot, will try again later
-    -- use { "github/copilot.vim" }
     use { "christoomey/vim-tmux-navigator" }
     use { "m4xshen/autoclose.nvim" }
     use { "mattn/emmet-vim" }
     use { "mg979/vim-visual-multi" }
+    -- canceled copilot, will try again later
+    -- use { "github/copilot.vim" }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
