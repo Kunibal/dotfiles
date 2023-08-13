@@ -27,6 +27,8 @@ return require('packer').startup(function(use)
     use { "m4xshen/autoclose.nvim" }
     use { "mattn/emmet-vim" }
     use { "mg979/vim-visual-multi" }
+    use { "tpope/vim-dadbod" }
+    use { "kristijanhusak/vim-dadbod-ui" }
     -- canceled copilot, will try again later
     -- use { "github/copilot.vim" }
 
@@ -58,10 +60,16 @@ return require('packer').startup(function(use)
 
     use { "iamcco/markdown-preview.nvim", run = "cd app && npm install",
         setup = function() vim.g.mkdp_filetypes = { "markdown" } end, ft = { "markdown" }, }
+
     use {
         'numToStr/Comment.nvim',
         config = function()
             require('Comment').setup()
         end
+    }
+
+    use {
+        "windwp/nvim-autopairs",
+        config = function() require("nvim-autopairs").setup {} end
     }
 end)
