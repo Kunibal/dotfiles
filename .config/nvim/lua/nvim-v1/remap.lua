@@ -52,3 +52,10 @@ end)
 -- vim.g.copilot_assume_mapped = true
 -- vim.api.nvim_set_keymap("i", "<C-B>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
 vim.g.user_emmet_leader_key = "<C-B>"
+
+-- copy absolute path
+vim.api.nvim_create_user_command("Cpath", function()
+    local path = vim.fn.expand("%:p")
+    vim.fn.setreg("+", path)
+    vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
