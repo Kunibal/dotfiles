@@ -1,7 +1,5 @@
 alias vim="nvim"
 alias gs="git status"
-alias mvdot="cp ~/pc-settings/.zshrc ~/.zshrc && cp -R ~/pc-settings/.config/nvim ~/.config && cp -R ~/pc-settings/.config/tmux ~/.config && cp -R ~/pc-settings/.config/alacritty ~/.config"
-alias updot="cp ~/.zshrc ~/pc-settings/.zshrc && cp -R ~/.config/nvim ~/pc-settings/.config && cp -R ~/.config/tmux ~/pc-settings/.config && cp -R ~/.config/alacritty ~/pc-settings/.config"
 
 export PATH=$PATH:$HOME/.composer/vendor/binexport PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 
