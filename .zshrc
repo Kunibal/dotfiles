@@ -1,5 +1,6 @@
 alias vim="nvim"
 alias gs="git status"
+alias ls="exa"
 
 export PATH=$PATH:$HOME/.composer/vendor/binexport PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 

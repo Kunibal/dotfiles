@@ -1,6 +1,8 @@
 #!/bin/sh
 
 mkdir -p ~/.config/nvim
+mkdir -p ~/.config/tmux
+
 ln -sf ~/pc-settings/.config/nvim/init.lua ~/.config/nvim/init.lua
 ln -sf ~/pc-settings/.config/nvim/after ~/.config/nvim
 ln -sf ~/pc-settings/.config/nvim/lua ~/.config/nvim
