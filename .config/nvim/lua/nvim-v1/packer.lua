@@ -29,8 +29,12 @@ return require('packer').startup(function(use)
     use { "mg979/vim-visual-multi" }
     use { "tpope/vim-dadbod" }
     use { "kristijanhusak/vim-dadbod-ui" }
+    use { "lewis6991/gitsigns.nvim" }
+    use { "tpope/vim-rhubarb" }
     -- canceled copilot, will try again later
     -- use { "github/copilot.vim" }
+    -- trying out codeium, to be able to compare it to copilot
+    use { "Exafunction/codeium.vim" }
 
     use {
         'VonHeikemen/lsp-zero.nvim',
