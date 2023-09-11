@@ -32,10 +32,10 @@ vim.keymap.set("n", "<C-f>", "<cmd>silent !tmux neww tmux-sessionizer<CR>")
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format)
 
 -- don't know what this does, still figuring it out
-vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
-vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
-vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
-vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
+-- vim.keymap.set("n", "<C-k>", "<cmd>cnext<CR>zz")
+-- vim.keymap.set("n", "<C-j>", "<cmd>cprev<CR>zz")
+-- vim.keymap.set("n", "<leader>k", "<cmd>lnext<CR>zz")
+-- vim.keymap.set("n", "<leader>j", "<cmd>lprev<CR>zz")
 
 -- rename all occurrences of word under cursor
 vim.keymap.set("n", "<leader>s", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left><Left>]])
@@ -46,6 +46,11 @@ vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 vim.keymap.set("n", "<leader><leader>", function()
     vim.cmd("so")
 end)
+
+-- Codeium AI
+vim.g.codeium_no_map_tab = true
+vim.api.nvim_set_keymap("i", "<C-J>", "codeium#Accept()",
+    { silent = true, expr = true, nowait = true, script = true })
 
 -- Ctrl B for copilot completion
 -- vim.g.copilot_no_tab_map = true
@@ -58,4 +63,11 @@ vim.api.nvim_create_user_command("Cpath", function()
     local path = vim.fn.expand("%:p")
     vim.fn.setreg("+", path)
     vim.notify('Copied "' .. path .. '" to the clipboard!')
+end, {})
+
+-- copy file name
+vim.api.nvim_create_user_command("CFileName", function()
+	local filename = vim.fn.expand("%:t")
+	vim.fn.setreg("+", filename)
+	vim.notify('Copied "' .. filename .. '" to the clipboard!')
 end, {})
