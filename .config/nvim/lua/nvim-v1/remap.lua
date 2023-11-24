@@ -56,6 +56,7 @@ vim.api.nvim_set_keymap("i", "<C-J>", "codeium#Accept()",
 -- vim.g.copilot_no_tab_map = true
 -- vim.g.copilot_assume_mapped = true
 -- vim.api.nvim_set_keymap("i", "<C-B>", 'copilot#Accept("<CR>")', { silent = true, expr = true })
+
 vim.g.user_emmet_leader_key = "<C-B>"
 
 -- copy absolute path
@@ -67,7 +68,7 @@ end, {})
 
 -- copy file name
 vim.api.nvim_create_user_command("CFileName", function()
-	local filename = vim.fn.expand("%:t")
-	vim.fn.setreg("+", filename)
-	vim.notify('Copied "' .. filename .. '" to the clipboard!')
+    local filename = vim.fn.expand("%:t")
+    vim.fn.setreg("+", filename)
+    vim.notify('Copied "' .. filename .. '" to the clipboard!')
 end, {})

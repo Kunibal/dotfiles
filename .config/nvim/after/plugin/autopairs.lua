@@ -3,9 +3,7 @@ local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local ts_utils = require("nvim-treesitter.ts_utils")
 
 local ts_node_func_parens_disabled = {
-    -- ecma
     named_imports = true,
-    -- rust
     use_declaration = true,
 }
 
