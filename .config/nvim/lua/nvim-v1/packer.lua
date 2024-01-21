@@ -38,7 +38,7 @@ return require('packer').startup(function(use)
     -- use { "github/copilot.vim" }
     -- trying out codeium, to be able to compare it to copilot
     use { "Exafunction/codeium.vim" }
-    use { "mhartington/formatter.nvim" }
+    use { "stevearc/conform.nvim" }
     use { "NvChad/nvim-colorizer.lua" }
 
     use {
