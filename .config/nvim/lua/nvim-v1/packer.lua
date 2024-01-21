@@ -12,15 +12,18 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
-
-    -- use whatever theme works
-    use { "catppuccin/nvim", as = "catppuccin" }
-    --  use { "rose-pine/neovim", as = "rose-pine" }
+    use "nvim-lua/plenary.nvim"
+    -- use { "catppuccin/nvim", as = "catppuccin" }
+    use { "rose-pine/neovim", as = "rose-pine" }
     --  use { "navarasu/onedark.nvim", as = "onedark" }
 
     use { "nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" } }
     use { "nvim-treesitter/nvim-treesitter-context" }
-    use { "ThePrimeagen/harpoon" }
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
     use { "mbbill/undotree" }
     use { "tpope/vim-fugitive" }
     use { "christoomey/vim-tmux-navigator" }
