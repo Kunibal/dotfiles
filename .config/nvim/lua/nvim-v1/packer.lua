@@ -12,16 +12,22 @@ return require('packer').startup(function(use)
         -- or                            , branch = '0.1.x',
         requires = { { 'nvim-lua/plenary.nvim' } }
     }
+    use { "xiyaowong/telescope-emoji.nvim" }
 
     -- use whatever theme works
-    use { "catppuccin/nvim", as = "catppuccin" }
-    --  use { "rose-pine/neovim", as = "rose-pine" }
-    --  use { "navarasu/onedark.nvim", as = "onedark" }
+    -- use { "catppuccin/nvim", as = "catppuccin" }
+    use { "rose-pine/neovim", as = "rose-pine" }
+    use { "oxfist/night-owl.nvim", as = "night-owl" }
 
     use { "nvim-treesitter/nvim-treesitter", { run = ":TSUpdate" } }
     use { "nvim-treesitter/nvim-treesitter-context" }
-    use { "ThePrimeagen/harpoon" }
+    use {
+        "ThePrimeagen/harpoon",
+        branch = "harpoon2",
+        requires = { { "nvim-lua/plenary.nvim" } }
+    }
     use { "mbbill/undotree" }
+    use { "stevearc/conform.nvim" }
     use { "tpope/vim-fugitive" }
     use { "christoomey/vim-tmux-navigator" }
     use { "m4xshen/autoclose.nvim" }
@@ -35,7 +41,6 @@ return require('packer').startup(function(use)
     -- canceled copilot, will try again later
     -- use { "github/copilot.vim" }
     use { "Exafunction/codeium.vim" }
-    use { "mhartington/formatter.nvim" }
     use { "NvChad/nvim-colorizer.lua" }
 
     use {
