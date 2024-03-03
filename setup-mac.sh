@@ -11,5 +11,5 @@ brew install alacritty
 brew install neovim
 brew install ripgrep
 brew install node
-brew install exa
+brew install eza
 brew install zsh-autosuggestions
