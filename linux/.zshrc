@@ -91,13 +91,18 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# Add directory and current branch to terminal name
+function parse_git_branch() {
+    git branch 2> /dev/null | sed -n -e 's/^\* \(.*\)/\1/p'
+}
+
 configure_prompt() {
-    prompt_symbol=㉿
+    prompt_symbol=@
     # Skull emoji for root terminal
     #[ "$EUID" -eq 0 ] && prompt_symbol=💀
     case "$PROMPT_ALTERNATIVE" in
         twoline)
-            PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n'$prompt_symbol$'%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─%B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+            PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n'$prompt_symbol$'%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─[%B%F{reset}$(parse_git_branch)%b%F{%(#.blue.green)}] %B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
             # Right-side prompt with exit codes and background processes
             #RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
             ;;
@@ -177,18 +182,6 @@ else
 fi
 unset color_prompt force_color_prompt
 
-toggle_oneline_prompt(){
-    if [ "$PROMPT_ALTERNATIVE" = oneline ]; then
-        PROMPT_ALTERNATIVE=twoline
-    else
-        PROMPT_ALTERNATIVE=oneline
-    fi
-    configure_prompt
-    zle reset-prompt
-}
-zle -N toggle_oneline_prompt
-bindkey ^P toggle_oneline_prompt
-
 # If this is an xterm set the title to user@host:dir
 case "$TERM" in
 xterm*|rxvt*|Eterm|aterm|kterm|gnome*|alacritty)
@@ -251,3 +244,5 @@ fi
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
+
+export PATH="$PATH:/opt/nvim/"
