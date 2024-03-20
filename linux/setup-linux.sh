@@ -3,9 +3,9 @@
 # First things first
 sudo apt-get update && sudo apt install tmux
 curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim.appimage
-chmod u+x nvim.appimage
-mkdir -p /opt/nvim
-mv nvim.appimage /opt/nvim/nvim
+sudo chmod u+x nvim.appimage
+sudo mkdir -p /opt/nvim
+sudo mv nvim.appimage /opt/nvim/nvim
 
 # tools and co.
 sudo apt install alacritty
@@ -17,7 +17,7 @@ sudo apt install gh
 sudo apt install strace && sudo apt install ltrace
 
 # programming languages
-curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+sudo apt install rustup
 sudo apt install rbenv
 sudo apt install golang-go
 curl https://get.volta.sh | bash
