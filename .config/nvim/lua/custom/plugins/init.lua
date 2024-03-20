@@ -61,7 +61,18 @@ return {
             },
             sections = {
                 lualine_a = { "mode" },
-                lualine_b = {},
+                lualine_b = {
+                    {
+                        "diagnostics",
+                        sources = { "nvim_diagnostic" },
+                        symbols = { error = " ", warn = " ", info = " " },
+                        diagnostics_color = {
+                            color_error = { fg = "#ec5f67" },
+                            color_warn = { fg = "#ECBE7B" },
+                            color_info = { fg = "#008080" },
+                        },
+                    },
+                },
                 lualine_c = {
                     {
                         "filename",
@@ -71,32 +82,6 @@ return {
                     },
                 },
                 lualine_x = {
-                    {
-                        "branch",
-                        {
-                            "diagnostics",
-                            sources = { "nvim_diagnostic" },
-                            symbols = { error = " ", warn = " ", info = " " },
-                            diagnostics_color = {
-                                color_error = { fg = "#ec5f67" },
-                                color_warn = { fg = "#ECBE7B" },
-                                color_info = { fg = "#008080" },
-                            },
-                        },
-                    },
-                },
-                lualine_y = {
-                    {
-                        "diff",
-                        symbols = { added = "+", modified = "~", removed = "-" },
-                        diff_color = {
-                            added = { fg = "#98be65" },
-                            modified = { fg = "#FF8800" },
-                            removed = { fg = "#ec5f67" },
-                        },
-                    },
-                },
-                lualine_z = {
                     {
                         function()
                             local msg = "No Active Lsp"
@@ -114,7 +99,23 @@ return {
                             return msg
                         end,
                         icon = "LSP:",
-                        color = { fg = "#ffffff", gui = "bold" },
+                        color = { fg = "#c678dd", gui = "bold" },
+                    },
+                },
+                lualine_y = {
+                    {
+                        "diff",
+                        symbols = { added = "+", modified = "~", removed = "-" },
+                        diff_color = {
+                            added = { fg = "#98be65" },
+                            modified = { fg = "#FF8800" },
+                            removed = { fg = "#ec5f67" },
+                        },
+                    },
+                },
+                lualine_z = {
+                    {
+                        "branch",
                     },
                 },
                 tabline = {},
