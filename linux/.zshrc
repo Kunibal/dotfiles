@@ -246,3 +246,5 @@ if [ -f /etc/zsh_command_not_found ]; then
 fi
 
 export PATH="$PATH:/opt/nvim/"
+export VOLTA_HOME=$HOME/.volta
+export PATH="$PATH:$VOLTA_HOME/bin"
