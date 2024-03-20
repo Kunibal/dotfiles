@@ -359,6 +359,7 @@ require("lazy").setup {
                 javascript = { { "prettierd" } },
                 typescript = { { "prettierd" } },
                 typescriptreact = { { "prettierd" } },
+                css = { { "prettierd" } },
             },
         },
     },

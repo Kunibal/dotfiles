@@ -9,4 +9,4 @@ ln -sf ~/pc-settings/.config/nvim/lua ~/.config/nvim
 ln -sf ~/pc-settings/.config/nvim/.stylua.toml ~/.config/nvim/.stylua.toml
 ln -sf ~/pc-settings/mac/.zshrc ~/.zshrc
 ln -sf ~/pc-settings/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
-ln -sf ~/pc-settings/.config/alacritty/alacritty.yml ~/.config/alacritty/alacritty.yml
+ln -sf ~/pc-settings/.config/alacritty/mac/alacritty.yml ~/.config/alacritty/alacritty.yml
