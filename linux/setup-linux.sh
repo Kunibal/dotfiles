@@ -13,6 +13,7 @@ sudo apt install ripgrep
 sudo apt install eza
 sudo apt install zsh-autosuggestions
 sudo apt install cloc
+sudo apt install gh
 sudo apt install strace && sudo apt install ltrace
 
 # programming languages
@@ -20,7 +21,3 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 sudo apt install rbenv
 sudo apt install golang-go
 curl https://get.volta.sh | bash
-
-# configure tools
-export VOLTA_HOME=$HOME/.volta
-export PATH=PATH:/$VOLTA_HOME/bin
