@@ -139,4 +139,44 @@ return {
             vim.fn["mkdp#util#install"]()
         end,
     },
+    {
+        "mattn/emmet-vim",
+        config = function()
+            vim.g.user_emmet_leader_key = "<C-B>"
+        end,
+    },
+    {
+        "christoomey/vim-tmux-navigator",
+        cmd = {
+            "TmuxNavigateLeft",
+            "TmuxNavigateDown",
+            "TmuxNavigateUp",
+            "TmuxNavigateRight",
+            "TmuxNavigatePrevious",
+        },
+        keys = {
+            { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+            { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+            { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+            { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
+            { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
+        },
+    },
+    {
+        "kristijanhusak/vim-dadbod-ui",
+        dependencies = {
+            { "tpope/vim-dadbod", lazy = true },
+            { "kristijanhusak/vim-dadbod-completion", ft = { "sql", "mysql", "plsql" }, lazy = true },
+        },
+        cmd = {
+            "DBUI",
+            "DBUIToggle",
+            "DBUIAddConnection",
+            "DBUIFindBuffer",
+        },
+        init = function()
+            -- Your DBUI configuration
+            vim.g.db_ui_use_nerd_fonts = 1
+        end,
+    },
 }
