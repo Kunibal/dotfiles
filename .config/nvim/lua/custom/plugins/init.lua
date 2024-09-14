@@ -65,7 +65,7 @@ return {
                     {
                         "diagnostics",
                         sources = { "nvim_diagnostic" },
-                        symbols = { error = " ", warn = " ", info = " " },
+                        symbols = { error = "E ", warn = "W ", info = "? " },
                         diagnostics_color = {
                             color_error = { fg = "#ec5f67" },
                             color_warn = { fg = "#ECBE7B" },
