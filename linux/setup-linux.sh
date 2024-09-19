@@ -1,5 +1,15 @@
 #!/bin/sh
 
+# linux setup
+# debian based
+
+# in case there is no <tool-name>
+sudo apt install curl
+sudo apt install git
+
+# install fonts
+sudo apt install fonts-firacode
+
 # First things first
 # tmux + tmux plugin manager
 sudo apt-get update && sudo apt install tmux
@@ -20,6 +30,7 @@ sudo apt install eza
 sudo apt install cloc
 sudo apt install gh
 sudo apt install strace && sudo apt install ltrace
+sudo apt install zsh-autosuggestions
 
 # programming languages
 # Rust
@@ -28,6 +39,9 @@ rustup default stable
 
 # Golang
 sudo apt install golang-go
+
+# Clang
+sudo apt install clang
 
 # install node + npm through volta afterwards
 curl https://get.volta.sh | bash
