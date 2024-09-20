@@ -216,10 +216,6 @@ if [ -x /usr/bin/dircolors ]; then
     alias diff='diff --color=auto'
     alias ip='ip --color=auto'
 
-    alias vim="nvim"
-    alias gs="git status"
-    alias ls="eza"
-
     export LESS_TERMCAP_mb=$'\E[1;31m'     # begin blink
     export LESS_TERMCAP_md=$'\E[1;36m'     # begin bold
     export LESS_TERMCAP_me=$'\E[0m'        # reset bold/blink
@@ -244,6 +240,10 @@ fi
 if [ -f /etc/zsh_command_not_found ]; then
     . /etc/zsh_command_not_found
 fi
+
+alias vim="nvim"
+alias gs="git status"
+alias ls="eza"
 
 export PATH="$PATH:/opt/nvim/"
 export VOLTA_HOME=$HOME/.volta

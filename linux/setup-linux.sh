@@ -30,6 +30,7 @@ sudo apt install eza
 sudo apt install cloc
 sudo apt install gh
 sudo apt install strace && sudo apt install ltrace
+sudo apt install zsh-syntax-highlighting
 sudo apt install zsh-autosuggestions
 
 # programming languages
