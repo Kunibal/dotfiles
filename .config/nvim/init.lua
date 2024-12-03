@@ -78,7 +78,7 @@ vim.keymap.set("n", "<leader>ss", [[:%s/\<<C-r><C-w>\>/<C-r><C-w>/gI<Left><Left>
 -- make file into executable
 vim.keymap.set("n", "<leader>x", "<cmd>!chmod +x %<CR>", { silent = true })
 
-vim.g.user_emmet_leader_key = "<C-p>"
+vim.g.user_emmet_leader_key = "<C-e>"
 
 -- Diagnostic keymaps
 vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Go to previous [D]iagnostic message" })
@@ -312,6 +312,21 @@ require("lazy").setup {
                             },
                         },
                     },
+                },
+                clangd = {
+                    cmd = { "/usr/bin/clangd" },
+                    init_options = { clangdFileStatus = true },
+                    filetypes = { "c", "cpp" },
+                    root_dir = require("lspconfig").util.root_pattern(
+                        ".clangd",
+                        ".clang-tidy",
+                        ".clang-format",
+                        "compile_commands.json",
+                        "compile_flags.txt",
+                        "configure.ac",
+                        ".git"
+                    ),
+                    single_file_support = true,
                 },
             }
             require("mason").setup()
