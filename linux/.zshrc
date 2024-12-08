@@ -102,7 +102,7 @@ configure_prompt() {
     #[ "$EUID" -eq 0 ] && prompt_symbol=💀
     case "$PROMPT_ALTERNATIVE" in
         twoline)
-            PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}(%B%F{%(#.red.blue)}%n'$prompt_symbol$'%m%b%F{%(#.blue.green)})-[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─[%B%F{reset}~$(parse_git_branch)%b%F{%(#.blue.green)}] %B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
+            PROMPT=$'%F{%(#.blue.green)}┌──${debian_chroot:+($debian_chroot)─}${VIRTUAL_ENV:+($(basename $VIRTUAL_ENV))─}%B%F{%(#.red.blue)}%n%F{%(#.blue.green)}─[%B%F{reset}%(6~.%-1~/…/%4~.%5~)%b%F{%(#.blue.green)}]\n└─[%B%F{reset}~$(parse_git_branch)%b%F{%(#.blue.green)}] %B%(#.%F{red}#.%F{blue}$)%b%F{reset} '
             # Right-side prompt with exit codes and background processes
             #RPROMPT=$'%(?.. %? %F{red}%B⨯%b%F{reset})%(1j. %j %F{yellow}%B⚙%b%F{reset}.)'
             ;;
@@ -246,5 +246,11 @@ alias gs="git status"
 alias ls="eza"
 
 export PATH="$PATH:/opt/nvim/"
-export VOLTA_HOME=$HOME/.volta
-export PATH="$PATH:$VOLTA_HOME/bin"
+# Add directories managed by mise to PATH
+export PATH="/home/alex/.local/share/mise/installs/node/22.12.0/bin:/home/alex/.local/share/mise/installs/ruby/3.3.6/bin:/home/alex/.mise/bin:$PATH"
+
+# Set RUBYLIB for Ruby gems
+export RUBYLIB="/home/alex/.local/share/mise/installs/ruby/3.3.6/lib/rubygems_plugin"
+
+# Created by `pipx` on 2024-11-10 11:17:12
+export PATH="$PATH:/home/alex/.local/bin"
