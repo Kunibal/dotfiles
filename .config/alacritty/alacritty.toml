@@ -1,4 +1,4 @@
-import = ["/home/alex/pc-settings/.config/alacritty/rose-pine.toml"]
+import = ["/home/alex/dotfiles/.config/alacritty/rose-pine.toml"]
 
 [env]
 TERM = "xterm-256color"
