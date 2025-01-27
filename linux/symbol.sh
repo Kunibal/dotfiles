@@ -13,3 +13,4 @@ ln -sf ~/dotfiles/.config/tmux/tmux.conf ~/.config/tmux/tmux.conf
 ln -sf ~/dotfiles/.config/tmux/tmux_session.sh ~/.config/tmux/tmux_session.sh
 ln -sf ~/dotfiles/.config/alacritty/alacritty.toml ~/.config/alacritty/alacritty.toml
 ln -sf ~/dotfiles/.config/ghostty/config ~/.config/ghostty/config
+ln -sf ~/dotfiles/.config/.ideavimrc ~/.ideavimrc
