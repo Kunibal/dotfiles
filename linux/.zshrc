@@ -244,13 +244,9 @@ fi
 alias vim="nvim"
 alias gs="git status"
 alias ls="eza"
+alias tnew="~/.config/tmux/tmux_session.sh"
 
 export PATH="$PATH:/opt/nvim/"
-# Add directories managed by mise to PATH
-export PATH="/home/alex/.local/share/mise/installs/node/22.12.0/bin:/home/alex/.local/share/mise/installs/ruby/3.3.6/bin:/home/alex/.mise/bin:$PATH"
-
-# Set RUBYLIB for Ruby gems
-export RUBYLIB="/home/alex/.local/share/mise/installs/ruby/3.3.6/lib/rubygems_plugin"
 
 # Created by `pipx` on 2024-11-10 11:17:12
 export PATH="$PATH:/home/alex/.local/bin"

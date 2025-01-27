@@ -31,6 +31,9 @@ vim.opt.updatetime = 50
 
 vim.opt.colorcolumn = "80"
 vim.api.nvim_create_autocmd("Filetype", { pattern = "rust", command = "set colorcolumn=100" })
+vim.api.nvim_create_autocmd("Filetype", { pattern = "zig", command = "set colorcolumn=100" })
+-- disable format on save for zig
+vim.g.zig_fmt_autosave = 0
 
 vim.opt.termguicolors = true
 
@@ -328,6 +331,19 @@ require("lazy").setup {
                     ),
                     single_file_support = true,
                 },
+                zls = {
+                    root_dir = require("lspconfig").util.root_pattern(".git", "build.zig", "zls.json"),
+                    settings = {
+                        zls = {
+                            enable_inlay_hints = true,
+                            enable_snippets = true,
+                            warn_style = true,
+                            enable_autofix = false,
+                        },
+                    },
+                    single_file_support = true,
+                    filetypes = { "zig", "zir" },
+                },
             }
             require("mason").setup()
             local ensure_installed = vim.tbl_keys(servers or {})
@@ -338,6 +354,7 @@ require("lazy").setup {
                 "rust_analyzer",
                 "gopls",
                 "prettierd",
+                "zls",
                 -- "asm-lsp",
             })
             require("mason-tool-installer").setup { ensure_installed = ensure_installed }
@@ -362,7 +379,7 @@ require("lazy").setup {
                 -- Disable "format_on_save lsp_fallback" for languages that don't
                 -- have a well standardized coding style. You can add additional
                 -- languages here or re-enable it for the disabled ones.
-                local disable_filetypes = { c = true, cpp = true, rust = true }
+                local disable_filetypes = { c = true, cpp = true, rust = true, zig = true }
                 return {
                     timeout_ms = 500,
                     lsp_fallback = not disable_filetypes[vim.bo[bufnr].filetype],
@@ -447,7 +464,7 @@ require("lazy").setup {
         "nvim-treesitter/nvim-treesitter",
         build = ":TSUpdate",
         opts = {
-            ensure_installed = { "bash", "c", "lua", "typescript", "markdown", "rust" },
+            ensure_installed = { "bash", "c", "lua", "typescript", "markdown", "rust", "zig" },
             sync_install = false,
             auto_install = true,
             highlight = {
