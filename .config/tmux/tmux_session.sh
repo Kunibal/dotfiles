@@ -6,8 +6,9 @@ NOTES_DIR="$HOME/memo"
 
 # Validate the starting directory
 if [[ ! -d "$START_DIR" ]]; then
-  echo "Error: Directory '$START_DIR' does not exist."
-  exit 1
+  echo "Directory '$START_DIR' does not exist."
+  echo "Creating '$START_DIR'..."
+  mkdir -p $START_DIR
 fi
 
 tmux has-session -t $SESSION_NAME 2>/dev/null
