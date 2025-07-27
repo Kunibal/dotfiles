@@ -2,13 +2,14 @@
 
 SESSION_NAME="$1"
 START_DIR="$2"
-NOTES_DIR="$HOME/memo"
+NOTES_DIR="$HOME/memo/$1"
 
-# Validate the starting directory
 if [[ ! -d "$START_DIR" ]]; then
-  echo "Directory '$START_DIR' does not exist."
-  echo "Creating '$START_DIR'..."
   mkdir -p $START_DIR
+fi
+
+if [[ ! -d "$NOTES_DIR" ]]; then
+  mkdir -p $NOTES_DIR
 fi
 
 tmux has-session -t $SESSION_NAME 2>/dev/null

@@ -37,7 +37,6 @@ setopt hist_verify
 # force zsh to show the complete history
 alias history="history 0"
 
-# configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
 case "$TERM" in
@@ -58,68 +57,62 @@ last_pwd=""
 last_git_branch=""
 
 parse_git_branch() {
-  if [[ "$PWD" != "$last_pwd" ]]; then
-    last_git_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
-    last_pwd="$PWD"
-  fi
-  echo "$last_git_branch"
+    if [[ "$PWD" != "$last_pwd" ]]; then
+        last_git_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+        last_pwd="$PWD"
+    fi
+    echo "$last_git_branch"
 }
 
 abbreviate_path() {
-  local fullpath="${1/#$HOME/~}"
-  local -a parts
-  local abbrev_path=""
-  local i
-
-  IFS='/' parts=(${(s:/:)fullpath})
-  local non_empty_parts=()
-  for part in $parts; do
-    [[ -n "$part" ]] && non_empty_parts+=("$part")
-  done
-
-  local total=${#non_empty_parts[@]}
-
-  if (( total > 2 )); then
-    for i in {1..${#parts[@]}}; do
-      local idx=$((i - 1))
-      local part="${parts[idx]}"
-      if [[ -z "$part" ]]; then
-        continue
-      fi
-      if [[ -z "$abbrev_path" ]]; then
-        # first part, no leading slash
-        if (( idx < total - 2 )); then
-          abbrev_path="${part[1,1]}"
-        else
-          abbrev_path="${part}"
-        fi
-      else
-        # subsequent parts, add slash then part
-        if (( idx < total - 2 )); then
-          abbrev_path+="/${part[1,1]}"
-        else
-          abbrev_path+="/${part}"
-        fi
-      fi
+    local fullpath="${1/#$HOME/~}"
+    
+    # Handle special cases
+    if [[ "$fullpath" == "~" ]]; then
+        REPLY="~"
+        return
+    fi
+    
+    # Use parameter expansion to split path into array
+    local -a path_parts
+    path_parts=(${(s:/:)fullpath})
+    
+    # Remove empty elements (from leading slash)
+    path_parts=(${path_parts:#""})
+    
+    local total=${#path_parts[@]}
+    
+    # If 3 or fewer parts, show everything
+    if (( total <= 3 )); then
+        REPLY="$fullpath"
+        return
+    fi
+    
+    # More than 3 parts: show first part + abbreviated middle + last 2 parts
+    local result="${path_parts[1]}"  # First part (~ or root)
+    
+    # Abbreviate all middle parts except the last 2
+    for i in {2..$((total-2))}; do
+        result+="/${path_parts[i][1]}"
     done
-  else
-    abbrev_path="$fullpath"
-  fi
-
-  REPLY="$abbrev_path"
+    
+    # Add last 2 parts in full
+    result+="/${path_parts[-2]}/${path_parts[-1]}"
+    
+    REPLY="$result"
 }
 
 configure_prompt() {
-  local git_branch=$(parse_git_branch)
-  abbreviate_path "$PWD"
-  local dir="$REPLY"
-
-  PROMPT="%B%F{blue}%n%f%b"
-  PROMPT+="%F{green}${dir}%f"
-  if [[ -n $git_branch ]]; then
-    PROMPT+=":%F{magenta}$git_branch%f"
-  fi
-  PROMPT+=" %# "
+    local git_branch=$(parse_git_branch)
+    abbreviate_path "$PWD"
+    local dir="$REPLY"
+    
+    PROMPT="%B%F{blue}%n%f%b"
+    PROMPT+="%F{green}${dir}%f"
+    if [[ -n $git_branch ]]; then
+        PROMPT+=":%F{magenta}$git_branch%f"
+    fi
+    PROMPT+=" %# "
 }
 
 precmd_functions+=(configure_prompt)
