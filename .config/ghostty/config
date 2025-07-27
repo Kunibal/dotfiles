@@ -3,7 +3,7 @@ font-family = "Fira Code Medium"
 font-family-bold = "Fira Code Medium"
 font-family-italic = "Fira Code Medium"
 font-family-bold-italic = "Fira Code Medium"
-font-size = 18
+font-size = 16
 
 theme = rose-pine
 
