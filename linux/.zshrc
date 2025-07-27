@@ -40,14 +40,6 @@ alias history="history 0"
 # configure `time` format
 TIMEFMT=$'\nreal\t%E\nuser\t%U\nsys\t%S\ncpu\t%P'
 
-# make less more friendly for non-text input files, see lesspipe(1)
-#[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
-
-# set variable identifying the chroot you work in (used in the prompt below)
-if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
-    debian_chroot=$(cat /etc/debian_chroot)
-fi
-
 case "$TERM" in
     xterm-color|*-256color) color_prompt=yes;;
 esac
@@ -62,8 +54,15 @@ if [ -n "$force_color_prompt" ]; then
 fi
 
 # --- Prompt Settings ---
+last_pwd=""
+last_git_branch=""
+
 parse_git_branch() {
-  git rev-parse --abbrev-ref HEAD 2>/dev/null
+  if [[ "$PWD" != "$last_pwd" ]]; then
+    last_git_branch=$(git rev-parse --abbrev-ref HEAD 2>/dev/null)
+    last_pwd="$PWD"
+  fi
+  echo "$last_git_branch"
 }
 
 abbreviate_path() {
@@ -118,7 +117,7 @@ configure_prompt() {
   PROMPT="%B%F{blue}%n%f%b"
   PROMPT+="%F{green}${dir}%f"
   if [[ -n $git_branch ]]; then
-    PROMPT+=":%F{cyan}$git_branch%f"
+    PROMPT+=":%F{magenta}$git_branch%f"
   fi
   PROMPT+=" %# "
 }
