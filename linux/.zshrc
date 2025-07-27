@@ -66,39 +66,39 @@ parse_git_branch() {
 
 abbreviate_path() {
     local fullpath="${1/#$HOME/~}"
-    
+
     # Handle special cases
     if [[ "$fullpath" == "~" ]]; then
         REPLY="~"
         return
     fi
-    
+
     # Use parameter expansion to split path into array
     local -a path_parts
     path_parts=(${(s:/:)fullpath})
-    
+
     # Remove empty elements (from leading slash)
     path_parts=(${path_parts:#""})
-    
+
     local total=${#path_parts[@]}
-    
+
     # If 3 or fewer parts, show everything
     if (( total <= 3 )); then
         REPLY="$fullpath"
         return
     fi
-    
+
     # More than 3 parts: show first part + abbreviated middle + last 2 parts
     local result="${path_parts[1]}"  # First part (~ or root)
-    
+
     # Abbreviate all middle parts except the last 2
     for i in {2..$((total-2))}; do
         result+="/${path_parts[i][1]}"
     done
-    
+
     # Add last 2 parts in full
     result+="/${path_parts[-2]}/${path_parts[-1]}"
-    
+
     REPLY="$result"
 }
 
@@ -106,7 +106,7 @@ configure_prompt() {
     local git_branch=$(parse_git_branch)
     abbreviate_path "$PWD"
     local dir="$REPLY"
-    
+
     PROMPT="%B%F{blue}%n%f%b"
     PROMPT+="%F{green}${dir}%f"
     if [[ -n $git_branch ]]; then
